@@ -1,0 +1,10 @@
+name: 3-2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  say-hello1:
+    runs-on: ubuntu-latest
+    steps:
+      - run : echo "auitear1"
