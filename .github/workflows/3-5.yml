@@ -4,17 +4,17 @@ on:
   workflow_dispatch:
 
 env:
-  workflow_soi: I biggest
+  workflow_soi: I biggest  #run ระดับ workflow รันได้ทุก jobs
 
 jobs:
   job-1:
     runs-on: ubuntu-latest
     env:
-      job_soi: I middle big
+      job_soi: I middle big   #run ระดับ jobs ได้เฉพาะ jobs นี้เช่น jobs 1 อย่างเดียว
     steps:
       - name: job1-1
         env:
-          step_soi: I smallest
+          step_soi: I smallest   #run ระดับ steps ใช้ได้แค่ job1-1
         run:
           echo "sawatdee:${workflow_soi}"
           echo "sawatdee:${job_soi}"
@@ -23,7 +23,7 @@ jobs:
         run:
           echo "sawatdee:${workflow_soi}"
           echo "sawatdee:${job_soi}"
-          echo "sawatdee:${step_soi:-<UNSET>}"
+          echo "sawatdee:${step_soi:-<UNSET>}"  # :- <unset>  คือถ้าไม่มีค่า ${stepsoi} ให้โชว <unset แทน>
     
     
   job-2:
