@@ -1,0 +1,21 @@
+name: Simple Secrets Demo
+
+on:
+  workflow_dispatch:  # ให้กด run manual ได้
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+
+    env:
+      # ดึงค่าจาก secrets และ vars
+      API_KEY: ${{ secrets.MY_API_KEY }}
+      APP_MODE: ${{ vars.APP_MODE }}
+
+    steps:
+      - name: Step 1 - Show environment variables
+        run: |
+          echo "=== START DEMO ==="
+          echo "APP_MODE: $APP_MODE"
+          echo "API_KEY (hidden): $API_KEY"
+          echo "=== END ==="
