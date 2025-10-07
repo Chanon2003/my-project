@@ -1,18 +1,19 @@
 name: 3-4 Triggering events
 
 on:
-  push:
-    branches:
-      - "soi/*"
+  push: #Workflow จะ ทำงานเมื่อมีการ push
+    branches:  #แต่ จำกัดเฉพาะ branch ที่ชื่อขึ้นต้นด้วย soi/
+      - "soi/*"    #เช่น soi/feature1, soi/bugfix
+      - "main"
 
   pull_request:
     types:
-      - opened
-      - synchronize
-      - reopened
+      - opened    #เปิด PR ใหม่
+      - synchronize #push commit เข้า PR ที่มีอยู่
+      - reopened #PR ที่ปิดแล้วถูกเปิดใหม่
     paths:
-      - "soi.md"
-      - "!soi.txt"
+      - "soi.md" #ถ้ามีการแก้ไขไฟล์นี้ → workflow ทำงาน
+      - "!soi.txt" #ถ้าแก้ไขไฟล์นี้ → workflow จะไม่ทำงาน
   workflow_dispatch:
 jobs:
   echo-event:
