@@ -8,7 +8,7 @@ env:
 
 jobs:
   job-1:
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
     env:
       job_soi: I middle big
     steps:
@@ -18,9 +18,16 @@ jobs:
         run:
           echo "sawatdee:${workflow_soi}"
           echo "sawatdee:${job_soi}"
-          echo "sawatdee:${step_soi}"
+          echo "sawatdee:${step_soi:-<UNSET>}"
+      - name: job1-2
+        run:
+          echo "sawatdee:${workflow_soi}"
+          echo "sawatdee:${job_soi}"
+          echo "sawatdee:${step_soi:-<UNSET>}"
+    
+    
   job-2:
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
     steps:
       - name: job2-1
         run:
