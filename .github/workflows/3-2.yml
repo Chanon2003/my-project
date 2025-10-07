@@ -7,4 +7,11 @@ jobs:
   say-hello1:
     runs-on: ubuntu-latest
     steps:
-      - run : echo "auitear1"
+      - run: echo "auitear1"
+
+  say-hello2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: print("Hello from python")
+        shell: python
+    
